@@ -1,0 +1,12 @@
+# Archivos a ignorar por Git
+
+# FeatureIDE
+modelos/.featureide
+
+# Maven
+target/
+
+# Eclipse
+.project
+.classpath
+.settings/

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+    <properties/>
+    <struct>
+        <and mandatory="true" name="Sensor de Pulso">
+            <alt mandatory="true" name="Distancia de Operación">
+                <feature name="10m"/>
+                <feature name="30m"/>
+            </alt>
+            <alt name="Exactitud">
+                <feature name="95%"/>
+                <feature name="100%"/>
+            </alt>
+            <or mandatory="true" name="Conectividad">
+                <feature name="WiFi"/>
+                <feature name="ZigBee"/>
+                <feature name="Bluetooth"/>
+            </or>
+        </and>
+    </struct>
+    <constraints>
+        <rule>
+            <imp>
+                <var>100%</var>
+                <var>10m</var>
+            </imp>
+        </rule>
+    </constraints>
+    <calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+    <comments/>
+    <featureOrder userDefined="false"/>
+</featureModel>

@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>co.edu.uniandes</groupId>
+	<artifactId>featureide-tutorial</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>Proyecto para el tutorial de FeatureIDE</name>
+
+	<properties>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.ovgu.featureide</groupId>
+			<artifactId>de.ovgu.featureide.lib.fm</artifactId>
+			<version>3.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+
+	<!-- Use también el repositorio de TiCSw -->
+	<repositories>
+		<repository>
+			<id>ticsw-mvn-repo</id>
+			<url>http://ticsw.github.io/mvn-repo/</url>
+		</repository>
+	</repositories>
+
+</project>
