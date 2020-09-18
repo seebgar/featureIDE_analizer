@@ -49,7 +49,50 @@ public class ContarConfiguraciones2 {
 		 * . , cn) = (count(c1) + 1) * . . . * (count(cn) + 1) - 1 count leaf = 1
 		 */
 
-		return BigInteger.ZERO;
+		BigInteger count = BigInteger.ZERO;
+
+		// si la característica es una hoja
+		// regla: count leaf = 1
+		if (!f.hasChildren()) {
+			count = BigInteger.ONE;
+
+			// si la característica es un grupo AND
+			// regla: count and(c1, . . . , cn) = count(c1) * ... * count(cn)
+		} else if (f.isAnd()) {
+			count = BigInteger.ONE;
+			for (IFeatureStructure fs : f.getChildren()) {
+				count = count.multiply( contarConfiguraciones(fs));
+			}
+
+			// si la característica es un grupo alternativo
+			// regla: count alternative(c1, . . . , cn) = count(c1) + ... + count(cn)
+		} else if (f.isAlternative()) {
+			for (IFeatureStructure fs : f.getChildren()) {
+				count = count.add(contarConfiguraciones(fs));
+			}
+
+			// si la característica es un grupo or
+			// regla: count or(c1, . . . , cn) = (count(c1) + 1) * ... * (count(cn) + 1) - 1
+		} else if (f.isOr()) {
+			count = BigInteger.ONE;
+			for (IFeatureStructure fs : f.getChildren()) {
+				  count = count.multiply(contarConfiguraciones(fs)
+                          .add(BigInteger.ONE));
+			}
+			 count = count.subtract(BigInteger.ONE);
+		}
+		
+		// si la característica es opcional
+        // regla: count optional(c) = count(c) + 1
+        if (!f.isMandatory()) {
+        	 count = count.add(BigInteger.ONE);
+        }
+                        
+        // si la característica es obligatoria, no se requiere hacer nada
+        // count mandatory(c)  = count(c)
+
+		return count;
+		
 	}
 
 }
